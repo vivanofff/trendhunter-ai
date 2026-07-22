@@ -1,17 +1,15 @@
-from datetime import datetime
+from app.collectors.youtube import get_video_data
 
 
-APP_NAME = "TrendHunter AI"
-VERSION = "0.1.0"
+def main():
+    videos = get_video_data("Python")
 
-
-def main() -> None:
-    print("=" * 45)
-    print(APP_NAME)
-    print(f"Version: {VERSION}")
-    print(f"Started: {datetime.now():%d.%m.%Y %H:%M:%S}")
-    print("Status: running")
-    print("=" * 45)
+    for video in videos:
+        print("Title:", video["title"])
+        print("Channel:", video["channel"])
+        print("Published:", video["published_at"])
+        print("URL:", video["url"])
+        print("-" * 50)
 
 
 if __name__ == "__main__":
